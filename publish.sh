@@ -38,10 +38,6 @@ fi
 echo "Building..."
 ./build.sh
 
-# build also the lectures to avoid any possible conflicts
-cd lectures
-./build.sh
-cd ..
 
 if [ $? -ne 0 ]; then
     echo "Build failed. Use ./build.sh script to debug the issue." 1>&2;
