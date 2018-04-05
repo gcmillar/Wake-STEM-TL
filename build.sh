@@ -103,34 +103,3 @@ do
         fi
     done
 done
-
-# Poster(s)
-# compiles posters and adds results to resources
-
-cd posters
-make FILE=agu2017
-make FILE=agu2017 RESOLUTION=150 ROTATE=0 rasterized
-cd ..
-cp posters/agu2017.pdf $OUTDIR/resources/
-cp posters/agu2017_rasterized.pdf $OUTDIR/resources/
-
-# Topics index
-
-FILES="build/topics/*.html"
-TITLE="Topics"
-HEAD_TEXT=""
-# if this gets longer, it must go to a file
-FOOT_TEXT="<p>
-<img src='../img/open_science.png' style='max-width: 90%;'>
-<h3>Related courses</h3>
-
-To learn more about these topics, here are some
-<a href=\"https://geospatial.ncsu.edu/osgeorel/courses.html\">related courses</a>
-which may be useful for you."
-DIR="topics"
-
-TGT_FILE=$OUTDIR/$DIR/index.html
-./increase-link-depth.py < $HEAD_FILE > $TGT_FILE
-echo "<!-- This is a generated file. Do not edit. -->" >> $TGT_FILE
-./generate-index.py "$TITLE" "$HEAD_TEXT" "$FOOT_TEXT" $OUTDIR/$DIR/ ul ul $FILES >> $TGT_FILE
-./increase-link-depth.py < $FOOT_FILE >> $TGT_FILE
