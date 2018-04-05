@@ -59,8 +59,8 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 if [ $? -ne 0 ]; then
     echo "git rev-parse failed. Is $(pwd) a clone of a repository?" 1>&2;
     exit
-elif [ "master" = "$current_branch" ]; then
-    echo "You are not on gh-pages branch in $build_dir, so you cannot publish pages." 1>&2;
+elif [ "gh-pages" = "$current_branch" ]; then
+    echo "You are not on master branch in $build_dir, so you cannot publish pages." 1>&2;
     echo "Using \"git branch\" to show current branches."
     git branch
     exit
