@@ -10,13 +10,13 @@ body {
 
 /* site top image */
 
-#header-image {
+header-image {
     height: 150px;
     background-image: url("img/fire1.jpg");
     background-repeat: no-repeat;
 }
 
-#header-image p {
+header-image p {
     margin: 0px;
     padding: 0px;
     padding-top: 80px;
