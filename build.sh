@@ -103,3 +103,18 @@ do
         fi
     done
 done
+
+# Topics index
+
+FILES="build/topics/*.html"
+TITLE="Topics"
+HEAD_TEXT=""
+# if this gets longer, it must go to a file
+FOOT_TEXT=""
+DIR="topics"
+
+TGT_FILE=$OUTDIR/$DIR/index.html
+./increase-link-depth.py < $HEAD_FILE > $TGT_FILE
+echo "<!-- This is a generated file. Do not edit. -->" >> $TGT_FILE
+./generate-index.py "$TITLE" "$HEAD_TEXT" "$FOOT_TEXT" $OUTDIR/$DIR/ ul ul $FILES >> $TGT_FILE
+./increase-link-depth.py < $FOOT_FILE >> $TGT_FILE
